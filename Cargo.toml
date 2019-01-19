@@ -1,0 +1,15 @@
+[package]
+name = "gst-ssd"
+version = "0.1.0"
+authors = ["Mason Stallmo <masonstallmo@gmail.com>"]
+edition = "2018"
+
+[lib]
+name = "gstssd"
+crate-type = ["cdylib"]
+path = "src/lib.rs"
+
+[dependencies]
+glib = { git = "https://github.com/gtk-rs/glib", features = ["subclassing"] }
+gst = { git = "https://gitlab.freedesktop.org/gstreamer/gstreamer-rs", features = ["subclassing"], package = "gstreamer" }
+
