@@ -12,4 +12,5 @@ path = "src/lib.rs"
 [dependencies]
 glib = { git = "https://github.com/gtk-rs/glib", features = ["subclassing"] }
 gst = { git = "https://gitlab.freedesktop.org/gstreamer/gstreamer-rs", features = ["subclassing"], package = "gstreamer" }
-
+gst_base = { git = "https://gitlab.freedesktop.org/gstreamer/gstreamer-rs", features = ["subclassing"], package = "gstreamer-base" }
+gst_video = { git = "https://gitlab.freedesktop.org/gstreamer/gstreamer-rs", package = "gstreamer-video" }

@@ -3,7 +3,10 @@ extern crate gst;
 #[macro_use]
 extern crate glib;
 
+mod ssdtf;
+
 fn plugin_init(plugin: &gst::Plugin) -> Result<(), glib::BoolError > {
+    ssdtf::register(plugin)?;
     Ok(())
 }
 
