@@ -1,25 +1,25 @@
 #[macro_use]
-extern crate gst;
+extern crate gstreamer as gst;
 #[macro_use]
 extern crate glib;
 
-mod ssdtf;
+mod ssmbd;
 
-fn plugin_init(plugin: &gst::Plugin) -> Result<(), glib::BoolError > {
-    ssdtf::register(plugin)?;
+fn plugin_init(plugin: &gst::Plugin) -> Result<(), glib::BoolError> {
+    ssmbd::register(plugin)?;
     Ok(())
 }
 
-gst::gst_plugin_define!(
-    "ssdtf",
-    "Single Shot Multi-box detector in TensorFlow",
+gst_plugin_define!(
+    "ssmbd",
+    "Single Shot Multi-box detector",
     plugin_init,
-    "0.1",
-    "MIT",
-    "ssdtf",
-    "ssdtf",
-    "https://github.com/mstallmo/gst-ssd",
-    "2019-01-19"
+    "1.0",
+    "MIT/X11",
+    "ssmbd",
+    "ssmbd",
+    "https://github.com/mstallmo/gst-plugin-ssd",
+    "2019-01-21"
 );
 
 #[cfg(test)]
