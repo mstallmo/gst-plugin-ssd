@@ -12,5 +12,8 @@ This plugin installs just like any standard GSteamer plugin. Make sure to place 
 
 See the [GStreamer Docs](https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/gst-running.html) for more information on how to install custom plugins.
 
+##Testing
+To do a simple test after building the plugin run the following from the bash shell `gst-launch-1.0 -v -e v4l2src device=/dev/video0 ! queue ! video/x-h264,width=1920,height=1080,framerate=30/1 ! h264parse ! avdec_h264 ! ssmbd ! xvimagesink sync=false`
+
 ## Author
 Mason Stallmo <masonstallmo@gmail.com>
