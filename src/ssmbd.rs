@@ -1,3 +1,4 @@
+use aperature::obd::ObjectDetection;
 use glib;
 use glib::prelude::*;
 use glib::subclass;
@@ -10,6 +11,7 @@ struct SingleShotMultiBox {
     cat: gst::DebugCategory,
     srcpad: gst::Pad,
     sinkpad: gst::Pad,
+    detector: ObjectDetection,
 }
 
 impl SingleShotMultiBox {
@@ -109,6 +111,7 @@ impl ObjectSubclass for SingleShotMultiBox {
         let sinkpad = gst::Pad::new_from_template(&templ, "sink");
         let templ = klass.get_pad_template("src").unwrap();
         let srcpad = gst::Pad::new_from_template(&templ, "src");
+        let detector = ObjectDetection::init();
 
         SingleShotMultiBox::set_pad_functions(&sinkpad, &srcpad);
 
@@ -120,6 +123,7 @@ impl ObjectSubclass for SingleShotMultiBox {
             ),
             srcpad,
             sinkpad,
+            detector,
         }
     }
 
@@ -173,7 +177,7 @@ impl ElementImpl for SingleShotMultiBox {
         match transition {
             gst::StateChange::NullToReady => {
                 //TODO: initialize tensorflow here
-                println!("Initializing TensorFlow!");
+               // println!("Initializing TensorFlow!");
             },
             _ => {}
         }
